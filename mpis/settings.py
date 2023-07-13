@@ -105,14 +105,14 @@ DATABASES = {
 
 # production database SKW USER
 # DATABASES = {
-#     'default': {
-#     'ENGINE':'django.db.backends.mysql',
-#     'NAME': 'new_skw',
-#     'USER':'skw_user',
-#     'PASSWORD':'n1Mechok@',
-#     'HOST':'45.56.115.113',
-#     'PORT':'3306',
-#     }
+    # 'default': {
+    # 'ENGINE':'django.db.backends.mysql',
+    # 'NAME': os.environ.get('DB_NAME'),
+    # 'USER':os.environ.get('DB_USER'),
+    # 'PASSWORD':os.environ.get('DB_PASSWORD'),
+    # 'HOST':os.environ.get('DB_HOST'),
+    # 'PORT':'3306',
+    # }
 # }
 
 
