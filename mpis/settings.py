@@ -14,19 +14,18 @@ from pathlib import Path
 import os
 import django_heroku
 import dj_database_url
-import dotenv
-
+from dotenv import load_dotenv
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 dotenv_file = os.path.join(BASE_DIR, ".env")
 if os.path.isfile(dotenv_file):
-    dotenv.load_dotenv(dotenv_file)
+    load_dotenv(dotenv_file)
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/3.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-ko$tyk@ac&o%b)!3f)1(v%!y#v1!_xiof_)&=o5*gk6-8!nztt'
+SECRET_KEY = os.environ.get('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -95,10 +94,10 @@ WSGI_APPLICATION = 'mpis.wsgi.application'
 DATABASES = {
     'default': {
     'ENGINE':'django.db.backends.mysql',
-    'NAME': 'new_skw',
-    'USER':'root',
-    'PASSWORD':'y4c@pt@2021',
-    'HOST':'45.56.115.113',
+    'NAME': os.environ.get('DB_NAME'),
+    'USER':os.environ.get('DB_USER'),
+    'PASSWORD':os.environ.get('DB_PASSWORD'),
+    'HOST':os.environ.get('DB_HOST'),
     'PORT':'3306',
     }
 }
