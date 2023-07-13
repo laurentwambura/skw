@@ -289,6 +289,7 @@ class SummaryListAPIView(ListAPIView):
         with connection.cursor() as cursor:
             cursor.execute(sql)
             row = cursor.fetchall()
+        # print(row)
         return row
 
     def get(self, request, *args, **kwargs):
