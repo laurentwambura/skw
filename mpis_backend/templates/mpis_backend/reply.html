@@ -1,0 +1,8 @@
+{% extends 'base.html' %} 
+{% load crispy_forms_tags %} 
+{% block content %}
+<form action="{%  url 'mpis_backend:send-msg' pk  %}" method="post">
+  {% csrf_token %} {{form | crispy}}
+  <a href=" {% url 'mpis_backend:send-msg' pk %} "><button type="submit">reply</button></a>
+</form>
+{% endblock content %}

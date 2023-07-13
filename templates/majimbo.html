@@ -1,0 +1,40 @@
+{% extends 'base.html' %} {% block content %}
+{% if messages %}
+<ul class="messages">
+    {% for message in messages %}
+    <li {% if message.tags %} class="alert alert-{{ message.tags }}"{% endif %}>{{ message }}</li>
+    {% endfor %}
+</ul>
+{% endif %}
+
+<div>
+  <table class="table table-bordered table-hover" id="oneshajimbo">
+    <thead>
+      <tr>
+        <th>Maoni</th>
+        <th>Jina la Jimbo</th>
+          <th>sekta</th>
+          <th>category</th>
+
+      </tr>
+    </thead>
+    <tbody>
+      {% for maoni in maoni %}
+      <tr>
+        <td><a href="{% url 'mpis_backend:reply' maoni.id %} ">{{maoni.maoni}}</a></td>
+        <td>{{maoni.jimbo}}</a></td>
+        <td>{{maoni.sekta}}</a></td>
+        {% if maoni.category == '1' %}
+            <td>Maoni</a></td>
+        {% elif maoni.category == '2' %}
+            <td>Mapendekezo</a></td>
+        {% else %}
+            <td>Pongezi</a></td>
+        {% endif %}
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+</div>
+
+{% endblock content %}

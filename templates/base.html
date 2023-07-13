@@ -1,0 +1,149 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css"
+      integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
+    <link
+      rel="stylesheet"
+      href="https://use.fontawesome.com/releases/v5.6.3/css/all.css"
+      integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/"
+      crossorigin="anonymous"/>
+          <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
+
+    <link rel="stylesheet" href="{% static 'mpis_backend/css/style.css' %}"/>
+ 
+      <script src="https://code.jquery.com/jquery-3.4.1.js"></script>
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
+
+    {% if title %}
+    <title>MPIS- {title}</title>
+    {% else %}
+    <title>MPIS</title>
+    {% endif %}
+  </head>
+  <body>  
+        {% if not request.user.is_authenticated %}
+        <div class="row container-fluid">
+              <a class="nav-link" href=" {% url 'login' %} " style="margin-left: auto"><i class="fas fa-sign-in-alt"></i> Login</a>
+          <div class="content">
+            <div class="header">
+              Karibu katika mfumo wa Sema na Kiongozi Wako.
+            </div>
+             <p class='header'>
+              Sehemu ya mkuu wa mkoa Kujibu maoni ya wananchi wake
+            </p>
+            {% block login %}{% endblock login %}
+          </div>
+        </div>
+      {% else %}
+      <div class="row container-fluid">
+        <div class="col-md-3 pl-0 pt-6">
+          <div class="btn">
+           <span class="fas fa-bars"></span>
+         </div>
+         <nav class="sidebar">
+           <div class="text">
+             Yaliyomo</div>
+           <ul>
+             <li class="active"><a href="">Mwanzo</a></li>
+             <li>
+               <a class="feat-btn">Majimbo
+                 <span class="fas fa-caret-down first"></span>
+               </a>
+               <ul class="feat-show">
+                 <li><a href="">Mbeya vijijini</a></li>
+                 <li><a href="">Mbarali</a></li>
+                 <li><a href="">Mbarali</a></li>
+                 <li><a href="">Mbarali</a></li>
+               </ul>
+             </li>
+     
+             <li><a class="serv-btn">Maoni
+               <span class="fas fa-caret-down second"></span>
+             </a>
+             <ul class="serv-show">
+               <li><a href=" {% url 'mpis_backend:maoni' %} ">Mapendekezo</a></li>
+             </ul>
+           </li>
+ 
+             <li><a href="">Binafsi</a></li>
+               <li>
+                 <a href="{% url 'logout' %}"> <i class="fas fa-sign-out-alt"></i> Logout</a>
+               </li>
+           </ul>
+         </nav>
+        </div>
+        <div class="col-md-9">
+          {% block content %} {% endblock content %}
+        </div>
+      </div>
+     {% endif %}
+
+      <script>
+        $('.btn').click(function () {
+          $(this).toggleClass("click");
+          $('.sidebar').toggleClass("show");
+        });
+        $('.feat-btn').click(function () {
+          $('nav ul .feat-show').toggleClass("show");
+          $('nav ul .first').toggleClass("rotate");
+        });
+        $('.serv-btn').click(function () {
+          $('nav ul .serv-show').toggleClass("show1");
+          $('nav ul .second').toggleClass("rotate");
+        });
+        $('.fit-btn').click(function () {
+         $('nav ul .fit-show').toggleClass("show2");
+           $('nav ul .third').toggleClass("rotate");
+            });
+
+                  
+        $('nav ul li').click(function () {
+          $(this).addClass("active").siblings().removeClass("active");
+        });
+      </script>
+    
+    </body>
+    
+    </html>
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <!--Js script-->
+      <script src=" {% static 'mpis_backend/js/sekta_content_handler.js' %} "></script>
+      <script src="https://code.jquery.com/jquery-3.6.0.min.js"
+        integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+            <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.min.js"
+              integrity="sha384-+YQ4JLhjyBLPDQt//I+STsc9iw4uQqACwlvpslubQzn4u2UU2UFM80nGisd026JF" crossorigin="anonymous"></script>
+              <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-Piv4xVNRyMGpqkS2by6br4gNJ7DXjqk09RmUpJ8jgGtD7zP9yug3goQfGII0yAns" crossorigin="anonymous"></script>
+  </body>
+  <script>
+    $(".port-item").click(function () {
+      $(".collapse").collapse("hide");
+    });
+  </script>
+</html>
